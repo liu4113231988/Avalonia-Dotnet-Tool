@@ -1,4 +1,6 @@
-﻿using Avalonia.Input;
+﻿using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -10,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Xml.Linq;
+using Avalonia;
+using Ursa.Controls;
 
 namespace DotNetTool.ViewModels
 {
@@ -62,6 +66,36 @@ namespace DotNetTool.ViewModels
             Timestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds().ToString();
             Date = DateTimeOffset.Now.ToLocalTime().ToString("yyyy-MM-dd");
             Time = DateTimeOffset.Now.ToLocalTime().ToString("HH:mm:ss");
+        }
+
+        [RelayCommand]
+        public void SetNowMoMilli()
+        {
+            long time = DateTimeOffset.Now.ToUnixTimeMilliseconds() / 1000 * 1000;
+            Timestamp = time.ToString();
+            Date = DateTimeOffset.Now.ToLocalTime().ToString("yyyy-MM-dd");
+            Time = DateTimeOffset.Now.ToLocalTime().ToString("HH:mm:ss");
+        }
+
+
+        [RelayCommand]
+        public async Task Copy()
+        {
+            try
+            {
+                if (Application.Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+                {
+                    var clipboard = TopLevel.GetTopLevel(desktop.MainWindow)?.Clipboard;
+                    var dataObject = new DataObject();
+                    dataObject.Set(DataFormats.Text, Timestamp);
+                    await clipboard?.SetDataObjectAsync(dataObject);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                await MessageBox.ShowAsync(ex.Message);
+            }
         }
 
         void KeyDown(KeyEventArgs e)

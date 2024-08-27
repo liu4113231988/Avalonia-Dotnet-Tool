@@ -26,11 +26,19 @@
     <PackageReference Include="Irihi.Ursa" Version="1.1.0" />
     <PackageReference Include="Irihi.Ursa.Themes.Semi" Version="1.1.0" />
     <PackageReference Include="Semi.Avalonia" Version="11.1.0.2" />
+    <PackageReference Include="Simplecto.Avalonia.RichTextBox" Version="1.0.9" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Pages\TimestampView.axaml.cs">
       <DependentUpon>TimestampView.axaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\FormatView.axaml.cs">
+      <DependentUpon>FormatView.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>

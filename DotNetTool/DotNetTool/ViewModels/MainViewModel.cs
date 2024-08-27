@@ -38,7 +38,7 @@ public partial class MainViewModel : ViewModelBase
             //MenuKeys.MenuKeyMember => new BannerDemoViewModel(),
             //MenuKeys.MenuKeyAsset => new ButtonGroupDemoViewModel(),
             //MenuKeys.MenuKeyMarketing => new BreadcrumbDemoViewModel(),
-            //MenuKeys.MenuKeySetting => new SettingViewModel(),
+            MenuKeys.MenuKeyFormat => new FormatViewModel(),
         };
     }
 }
