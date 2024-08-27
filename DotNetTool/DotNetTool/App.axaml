@@ -1,0 +1,29 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:u-semi="https://irihi.tech/ursa/themes/semi"
+             x:Class="DotNetTool.App"
+             RequestedThemeVariant="Default">
+	<!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+	<Application.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.ThemeDictionaries>
+				<ResourceDictionary x:Key="Light">
+					<SolidColorBrush x:Key="DataGridRowSelectedBackground" Opacity="0.3" Color="#FF54A9FF"/>
+				</ResourceDictionary>
+				<ResourceDictionary x:Key="Dark">
+					<SolidColorBrush x:Key="DataGridRowSelectedBackground" Opacity="0.3" Color="#B553C2"/>
+				</ResourceDictionary>
+			</ResourceDictionary.ThemeDictionaries>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceInclude Source="/Resources/Resource.axaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+		<Image Source="/Assets/tool_icon.png" x:Key="AppTrayIcon" />
+	</Application.Resources>
+	<Application.Styles>
+		<FluentTheme />
+		<StyleInclude Source="avares://Semi.Avalonia/Themes/Index.axaml" />
+		<u-semi:SemiTheme Locale="zh-CN"/>
+	</Application.Styles>
+</Application>

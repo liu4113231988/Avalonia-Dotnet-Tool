@@ -1,0 +1,52 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+			  xmlns:u="https://irihi.tech/ursa"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+             xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+             xmlns:iac="clr-namespace:Avalonia.Xaml.Interactions.Custom;assembly=Avalonia.Xaml.Interactions.Custom"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+            xmlns:vm="clr-namespace:DotNetTool.ViewModels"
+			 x:CompileBindings="True"
+			 x:DataType="vm:TimestampViewModel"
+			 x:Class="DotNetTool.Pages.TimestampView">
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:TimestampViewModel />
+	</Design.DataContext>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="10 0 0 0">
+			<TextBlock Text="Timestamp" Width="100" Margin="0 4 0 0" FontSize="16"/>
+			<TextBox Text="{Binding Timestamp}" Width="324" Margin="12 0 0 0">
+				<i:Interaction.Behaviors>
+					<ia:EventTriggerBehavior EventName="KeyDown" SourceObject="TextBox">
+						<ia:InvokeCommandAction Command="{Binding KeyDownCommand}" PassEventArgsToCommand="True" />
+					</ia:EventTriggerBehavior>
+				</i:Interaction.Behaviors>
+			</TextBox>
+			<Button Command="{Binding TimestampChangeCommand}" Margin="20 0 0 0">转换</Button>
+			<Button Command="{Binding SetNowCommand}" Margin="20 0 0 0">现在</Button>
+			<Button Command="{Binding SetNowMoMilliCommand}" Margin="20 0 0 0">现在(0ms)</Button>
+			<Button Command="{Binding CopyCommand}" Margin="20 0 0 0" Classes="Default" FontSize="14">复制</Button>
+		</StackPanel>
+		<StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="10 10 0 0">
+			<TextBlock Text="DateTime" FontSize="16" Width="100" Margin="0 4 0 0" />
+			<u:DatePicker Name="singlePicker" SelectedDate="{Binding Date}" Width="160" Margin="12 0 0 0" Classes="ClearButton" />
+			<u:TimePicker
+				Name="picker"
+				Width="160"
+				 Margin="4 0 0 0"
+				HorizontalAlignment="Left"
+				DisplayFormat="HH:mm:ss"
+				SelectedTime="{Binding Time}"
+				PanelFormat="tt HH mm ss" />
+			<Button Command="{Binding DateChangeCommand}" Margin="20 0 0 0">转换</Button>
+		</StackPanel>
+	</Grid>
+</UserControl>
