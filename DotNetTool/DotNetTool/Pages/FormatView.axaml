@@ -22,9 +22,9 @@
 		<TextBox Grid.Row="0" Margin="8 2 8 2" Grid.Column="0" HorizontalAlignment="Stretch"  TextWrapping="Wrap" AcceptsReturn="True"  Classes="TextArea"  TextAlignment="Left" VerticalAlignment="Stretch" Name="TextEditor" Text="{Binding Text}" />
 		<TextBox Grid.Row="0" Margin="8 2 8 2" Grid.Column="1" HorizontalAlignment="Stretch"  TextAlignment="Left"  Classes="TextArea" VerticalAlignment="Stretch" Name="ResultEditor" Text="{Binding Result}" />
 		<StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="0 10 0 0" HorizontalAlignment="Center" Orientation="Horizontal">
-			<Button Margin="0 4 10 4" Classes="Primary" Command="{Binding XmlFormatCommand}">Xml格式化</Button>
+			<Button Margin="0 4 10 4" FontSize="14" FontStyle="Normal" Classes="Primary" Command="{Binding XmlFormatCommand}">Xml格式化</Button>
 			<Button Margin="0 4 10 4" Classes="Primary" Command="{Binding JsonFormatCommand}">Json格式化</Button>
-			<Button Classes="Primary" Command="{Binding CopyCommand}">复制</Button>
+			<Button Classes="Primary" Command="{Binding CopyCommand}">复  制</Button>
 		</StackPanel>
 	</Grid>
 </UserControl>

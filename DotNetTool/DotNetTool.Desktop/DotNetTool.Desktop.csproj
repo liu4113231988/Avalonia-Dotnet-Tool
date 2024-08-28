@@ -7,7 +7,16 @@
     <Nullable>enable</Nullable>
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+	  <PublishSingleFile>true</PublishSingleFile>
+	  <IncludeContentFilesProjectOutputGroup>true</IncludeContentFilesProjectOutputGroup>
+	  <IncludeSatelliteDllsProjectOutputGroup>true</IncludeSatelliteDllsProjectOutputGroup>
+	  <IncludeBuiltProjectOutputGroup>true</IncludeBuiltProjectOutputGroup>
+	  <ApplicationIcon>tool64.ico</ApplicationIcon>
+	  <AssemblyName>DotNetTools</AssemblyName>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="tool64.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Avalonia.Desktop" Version="11.1.3" />
